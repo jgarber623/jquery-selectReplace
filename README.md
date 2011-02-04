@@ -1,5 +1,6 @@
 # jquery-selectReplace
 A jQuery plugin that provides the ability to creatively style `<select>` input types.
+
 This plugin was originally developed by [Blake Walters](http://github.com/markupboy). I'm totally borrowing it and storing it here for posterity and further development. I've posted it here with his expressed, non-written permission.
 
 
