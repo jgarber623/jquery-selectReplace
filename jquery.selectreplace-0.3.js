@@ -8,36 +8,40 @@
  */
 
 ;(function($) {
-	$.fn.selectReplace = function( opts ) {
+	$.fn.selectReplace = function( options ) {
+		if ( !( $.browser.msie && $.browser.version < 7 ) ) {
+			return this.each( function() {
+				var opts = $.extend( {}, $.fn.selectReplace.defaults, options ),
+					$this = $( this ),
+					$value = $( '<span class="value" />' ),
+					$wrapper = $( '<span class="select-wrapper" id="' + $this.attr( "id" ) + '-wrapper" />' );
+				
+				$value.html( $.fn.selectReplace.getCurrentValue( $this ) );
+				
+				$this.before( $value ).wrap( $wrapper ).bind({
+					"change": function() {
+						$value.html( $.fn.selectReplace.getCurrentValue( $this ) );
+					},
+					
+					"focus": function() {
+						$wrapper.addClass( opts.focusClassName );
+					},
+					
+					"blur": function() {
+						$wrapper.removeClass( opts.focusClassName );
+					}
+				});
+			});
+		}
+	};
+	
+	$.fn.selectReplace.getCurrentValue = function( select ) {
+		var $select = $( select );
 		
+		return $select.find( "option[value=" + $select.val() + "]" ).html();
+	};
+	
+	$.fn.selectReplace.defaults = {
+		focusClassName: "focus"
 	};
 })(jQuery);
-
-
-
-$.fn.selectReplace = function( opts ) {
-	if ( !( $.browser.msie && $.browser.version < 7 ) ) {
-		return this.each( function() {
-			var $this = $(this),
-				o = $.meta ? $.extend( {}, opts, $this.data() ) : opts;
-			
-			$this.wrap( '<span id="' + $this.attr( "id" ) + '-wrapper" class="select-wrapper"></span>' );
-			$this.before( '<span class="value">' + $this.find( "option[value=" + $this.val() + "]").html() + '</span>');
-			$this.css( "opacity", 0.01 );
-			
-			$this.bind({
-				"change": function() {
-					$this.siblings( ".value" ).html( $this.find( "option[value=" + $this.val() + "]" ).html() );
-				},
-				
-				"focus": function() {
-					$this.closest( ".select-wrapper" ).addClass( "focus" );
-				},
-				
-				"blur": function() {
-					$this.closest( ".select-wrapper" ).removeClass( "focus" );
-				}
-			});
-		});
-	}
-};
