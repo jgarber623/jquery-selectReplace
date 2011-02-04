@@ -24,5 +24,7 @@ In your HTML:
 In your JavaScript:
 
 	$().ready( function() {
-		$( "select" ).selectReplace();
+		$( "select" ).selectReplace({ focusClassName: "focus" });
 	});
+
+`focusClassName` is an optional string (default is "focus") that is added to the `class` attribute of the `<select>` element.
