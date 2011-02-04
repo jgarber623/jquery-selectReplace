@@ -1,3 +1,20 @@
+/**
+ * @name jQuery selectReplace (https://github.com/jgarber623/jquery-selectReplace)
+ * @version 0.3
+ * @author Jason Garber
+ * @copyright (cc) Jason Garber (http://sixtwothree.org and http://www.viget.com)
+ * 
+ * Licensed under the CC-GNU GPL (http://creativecommons.org/licenses/GPL/2.0/)
+ */
+
+;(function($) {
+	$.fn.selectReplace = function( opts ) {
+		
+	};
+})(jQuery);
+
+
+
 $.fn.selectReplace = function( opts ) {
 	if ( !( $.browser.msie && $.browser.version < 7 ) ) {
 		return this.each( function() {
