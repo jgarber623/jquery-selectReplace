@@ -18,17 +18,17 @@
 				
 				$value.html( $.fn.selectReplace.getCurrentValue( $this ) );
 				
-				$this.before( $value ).wrap( $wrapper ).bind({
+				$this.wrap( $wrapper ).before( $value ).bind({
 					"change": function() {
 						$value.html( $.fn.selectReplace.getCurrentValue( $this ) );
 					},
 					
 					"focus": function() {
-						$wrapper.addClass( opts.focusClassName );
+						$this.closest( "span.select-wrapper" ).addClass( opts.focusClassName );
 					},
 					
 					"blur": function() {
-						$wrapper.removeClass( opts.focusClassName );
+						$this.closest( "span.select-wrapper" ).removeClass( opts.focusClassName );
 					}
 				});
 			});
