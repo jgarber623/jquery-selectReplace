@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8" />
+
+	<title>jQuery.selectReplace() plugin example</title>
+	
+	<style type="text/css" media="screen">
+		body {
+			color: #333;
+			font: bold 26px Helvetica, Arial, sans-serif;
+			padding: 50px 0;
+		}
+		
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+		}
+		
+		li {
+			margin: 0 0 40px 0;
+			padding: 0;
+		}
+		
+		h1, form {
+			margin: 0 auto;
+			width: 680px;
+		}
+		
+		h1 {
+			font-size: 36px;
+			margin-bottom: 40px;
+		}
+		
+		label {
+			display: block;
+			margin-bottom: 4px;
+		}
+		
+		input {
+			border: 2px solid #999;
+			font: inherit;
+			padding: 8px;
+			width: 540px;
+		}
+		
+		span.select-wrapper {
+			background: #eee url("arrow.png") no-repeat 100% 12px;
+			border: 2px solid #999;
+			-moz-border-radius: 4px;
+			-webkit-border-radius: 4px;
+			border-radius: 4px;
+			display: inline-block;
+			height: 30px;
+			position: relative;
+			width: 400px;
+		}
+
+		span.select-wrapper select {
+			filter: alpha( opacity=1 );
+			height: 30px;
+			left: 0;
+			-moz-opacity: 0.01;
+			opacity: 0.01;
+			position: absolute;
+			top: 0;
+			width: 400px;
+		}
+
+		span.select-wrapper span.value {
+			font-size: 18px;
+			height: 30px;
+			padding-left: 10px;
+			width: 390px;
+		}
+
+	</style>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript" src="../jquery.selectreplace-0.1.js"></script>
+	
+	<script type="text/javascript">
+		$().ready( function() {
+			$( "select" ).selectReplace();
+		});
+	</script>
+</head>
+<body>
+
+	<h1>jQuery.selectReplace() plugin example</h1>
+	
+	<form>
+		<ul>
+			<li>
+				<label for="superheroes">Who is your favorite hero?</label>
+				<select name="superheroes" id="superheroes">
+					<option value="Batman">Batman</option>
+					<option value="Superman">Superman</option>
+					<option value="Spiderman">Spiderman</option>
+					<option value="Professor X">Professor X</option>
+					<option value="Optimus Prime">Optimus Prime</option>
+					<option value="Gumby">Gumby</option>
+				</select>
+			</li>
+		</ul>
+		
+		<input type="submit" value="Submit that bro!" />
+	</form>
+	
+</body>
+</html>
