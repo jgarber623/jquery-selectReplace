@@ -1,6 +1,5 @@
 /**
  * @name jQuery selectReplace (https://github.com/jgarber623/jquery-selectReplace)
- * @version 0.3
  * @author Jason Garber
  * @copyright (cc) Jason Garber (http://sixtwothree.org and http://www.viget.com)
  * 
@@ -38,7 +37,7 @@
 	$.fn.selectReplace.getCurrentValue = function( select ) {
 		var $select = $( select );
 		
-		return $select.find( "option[value=" + $select.val() + "]" ).html();
+		return $select.find( 'option[value="' + $select.val() + '"]' ).html();
 	};
 	
 	$.fn.selectReplace.defaults = {
