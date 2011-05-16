@@ -18,15 +18,15 @@
 				$value.html( $.fn.selectReplace.getCurrentValue( $this ) );
 				
 				$this.wrap( $wrapper ).before( $value ).bind({
-					"change": function() {
+					"change.selectReplace": function() {
 						$value.html( $.fn.selectReplace.getCurrentValue( $this ) );
 					},
 					
-					"focus": function() {
+					"focus.selectReplace": function() {
 						$this.closest( "span.select-wrapper" ).addClass( opts.focusClassName );
 					},
 					
-					"blur": function() {
+					"blur.selectReplace": function() {
 						$this.closest( "span.select-wrapper" ).removeClass( opts.focusClassName );
 					}
 				});
