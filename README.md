@@ -5,9 +5,11 @@ A jQuery plugin that provides the ability to creatively style `<select>` input t
 This plugin was originally developed by [Blake Walters](http://github.com/markupboy). I'm totally borrowing it and storing it here for posterity and further development. I've posted it here with his expressed, unwritten permission.
 
 ## Requirements
+
 * [jQuery](http://jquery.com/) (1.9 or greater)
 
 ## Usage
+
 In your HTML:
 
 	<label for="superheroes">Who is your favorite hero?</label>
@@ -22,7 +24,7 @@ In your HTML:
 
 In your JavaScript:
 
-	$().ready( function() {
+	$( document ).ready( function() {
 		$( 'select' ).selectReplace({ focusClassName: 'focus' });
 	});
 

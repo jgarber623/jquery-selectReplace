@@ -6,39 +6,55 @@
  * Licensed under the CC-GNU GPL (http://creativecommons.org/licenses/GPL/2.0/)
  */
 
-;(function($) {
+;(function( $, window, document, undefined ) {
+	
+	var SelectReplace = function( elem, options ) {
+		this.elem = elem;
+		this.$elem = $( elem );
+		this.options = options;
+		this.metadata = this.$elem.data( 'selectreplace-options' );
+	};
+	
+	SelectReplace.prototype = {
+		defaults: {
+			focusClassName: 'select-focus',
+			valueClassName: 'select-value',
+			wrapperClassName: 'select-wrapper'
+		},
+		
+		init: function() {
+			this.config = $.extend( {}, this.defaults, this.options, this.metadata );
+			
+			var _self = this,
+				$value = $( '<span class="' + this.config.valueClassName + '" />' ).html( this.getCurrentValue() ),
+				$wrapper = $( '<span class="' + this.config.wrapperClassName + '" />' );
+				
+			var events = {
+				'blur.selectReplace': function() {
+					_self.$elem.parent().removeClass( _self.config.focusClassName );
+				},
+				'change.selectReplace': function() {
+					$value.html( _self.getCurrentValue() );
+				},
+				'focus.selectReplace': function() {
+					_self.$elem.parent().addClass( _self.config.focusClassName );
+				}
+			};
+			
+			this.$elem.wrap( $wrapper ).before( $value ).on( events );
+			
+			return this;
+		},
+		
+		getCurrentValue: function() {
+			return this.$elem.find( ':selected' ).html();
+		}
+	};
+	
 	$.fn.selectReplace = function( options ) {
 		return this.each( function() {
-			var opts = $.extend( {}, $.fn.selectReplace.defaults, options ),
-				$this = $( this ),
-				$value = $( '<span class="value" />' ),
-				$wrapper = $( '<span class="select-wrapper" id="' + $this.attr( "id" ) + '-wrapper" />' );
-			
-			$value.html( $.fn.selectReplace.getCurrentValue( $this ) );
-			
-			$this.wrap( $wrapper ).before( $value ).bind({
-				"change.selectReplace": function() {
-					$value.html( $.fn.selectReplace.getCurrentValue( $this ) );
-				},
-				
-				"focus.selectReplace": function() {
-					$this.closest( "span.select-wrapper" ).addClass( opts.focusClassName );
-				},
-				
-				"blur.selectReplace": function() {
-					$this.closest( "span.select-wrapper" ).removeClass( opts.focusClassName );
-				}
-			});
+			new SelectReplace( this, options ).init();
 		});
 	};
 	
-	$.fn.selectReplace.getCurrentValue = function( select ) {
-		var $select = $( select );
-		
-		return $select.find( 'option[value="' + $select.val() + '"]' ).html();
-	};
-	
-	$.fn.selectReplace.defaults = {
-		focusClassName: "focus"
-	};
-})(jQuery);
+})( jQuery, window, document );

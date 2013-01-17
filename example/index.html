@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="utf-8" />
+	<meta charset="utf-8">
 
 	<title>jQuery.selectReplace() plugin example</title>
 	
-	<style type="text/css" media="screen">
+	<style>
 		body {
 			color: #333;
 			font: bold 26px Helvetica, Arial, sans-serif;
@@ -45,8 +45,8 @@
 			width: 540px;
 		}
 		
-		span.select-wrapper {
-			background: #eee url("arrow.png") no-repeat 100% 12px;
+		.select-wrapper {
+			background: #eee url( data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFAQMAAAB/zV5wAAAABlBMVEUAAAAAAAClZ7nPAAAAAXRSTlMAQObYZgAAABlJREFUCB1j+N/AwFDPwMBgB8QyQMzBwAAAJvgCYQPcO7EAAAAASUVORK5CYII= ) no-repeat 100% 12px;
 			border: 2px solid #999;
 			-moz-border-radius: 4px;
 			-webkit-border-radius: 4px;
@@ -57,7 +57,7 @@
 			width: 400px;
 		}
 
-		span.select-wrapper select {
+		.select-wrapper select {
 			filter: alpha( opacity=1 );
 			height: 30px;
 			left: 0;
@@ -68,7 +68,7 @@
 			width: 400px;
 		}
 
-		span.select-wrapper span.value {
+		.select-wrapper .select-value {
 			font-size: 18px;
 			height: 30px;
 			padding-left: 10px;
@@ -76,15 +76,6 @@
 		}
 
 	</style>
-	
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-	<script type="text/javascript" src="../jquery.selectreplace.js"></script>
-	
-	<script type="text/javascript">
-		$().ready( function() {
-			$( "select" ).selectReplace();
-		});
-	</script>
 </head>
 <body>
 
@@ -107,6 +98,15 @@
 		
 		<input type="submit" value="Submit that bro!" />
 	</form>
+	
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+	<script type="text/javascript" src="../jquery.selectreplace.js"></script>
+	
+	<script type="text/javascript">
+		$( document ).ready( function() {
+			$( 'select' ).selectReplace();
+		});
+	</script>
 	
 </body>
 </html>
