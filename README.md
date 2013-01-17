@@ -1,12 +1,11 @@
 # jquery-selectReplace
+
 A jQuery plugin that provides the ability to creatively style `<select>` input types.
 
-This plugin was originally developed by [Blake Walters](http://github.com/markupboy). I'm totally borrowing it and storing it here for posterity and further development. I've posted it here with his expressed, non-written permission.
-
+This plugin was originally developed by [Blake Walters](http://github.com/markupboy). I'm totally borrowing it and storing it here for posterity and further development. I've posted it here with his expressed, unwritten permission.
 
 ## Requirements
-* [jQuery](http://jquery.com/) (1.4.2 or greater is recommended)
-
+* [jQuery](http://jquery.com/) (1.9 or greater)
 
 ## Usage
 In your HTML:
@@ -24,7 +23,7 @@ In your HTML:
 In your JavaScript:
 
 	$().ready( function() {
-		$( "select" ).selectReplace({ focusClassName: "focus" });
+		$( 'select' ).selectReplace({ focusClassName: 'focus' });
 	});
 
 `focusClassName` is an optional string (default is "focus") that is added to the `class` attribute of the `<select>` element.
